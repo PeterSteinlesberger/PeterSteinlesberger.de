@@ -6,25 +6,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
- images = ['sourceCodeArt.jpg', 'software-development.jpg', 'dnaBinary.jpg', 'codeScreenSplitted.png'];
-currentImage = 0;
+  images = ['sourceCodeArt.jpg', 'software-development.jpg', 'dnaBinary.jpg', 'codeScreenSplitted.png'];
+  currentImage = 0;
+  showImage = true;
 
-ngOnInit() {
-this.updateImage();
-}
+  ngOnInit() {
+    this.updateImage();
+  }
 
 
 
-updateImage() {
+  updateImage() {
 
-  setInterval(() => {
-    this.currentImage++;
-    if(this.currentImage == this.images.length) {
-      this.currentImage = 0;
-    }
- // = this.currentImage % this.images.length;
-  }, 8000);
-}
+    setInterval(() => {
+      this.currentImage++;
+      if (this.currentImage == this.images.length) {
+        this.currentImage = 0;
+      }
+      this.showImage = false;
+
+      setTimeout(() => {
+        this.showImage = true;
+      }, 10);
+    }, 8000);
+  }
 
 
 }
